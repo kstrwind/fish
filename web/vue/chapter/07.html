@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <template id="my-app">
+        请输入问题: <input type="text" v-model="question">
+        <div>{{answer}}</div>
+    </template>
+    <script src="../pkg/vue.js"></script>
+    <script>
+    
+        const appIns = {
+            template: '#my-app',
+            data() {
+                return {
+                    question: "",
+                    answer: ""
+                }
+            },
+            computed: {
+                question: {
+                    get: function() {
+                        return this.question;
+                    },
+                    set: function(newValue) {
+                        console.log(newValue);
+                        this.question=newValue;
+                    }
+                }
+            },
+            watch:{
+                question:function(newValue, oldValue) {
+                    console.log("新question值: ",newValue,"旧question值: ",oldValue);
+                    this.queryAnswer();
+                }
+            },
+            methods: {
+                queryAnswer() {
+                    this.answer = `你的问题是: ${this.question}? 答案: 哈哈哈哈哈哈!`;
+                },
+                changeFullName() {
+                    this.fullName = "Coder Why";
+                },
+                getFullName() {
+                    console.log("methods 的 getFullName 中的计算");
+                    return this.firstName + " " + this.lastName;
+                }
+            }
+        }
+        Vue.createApp(appIns).mount('#app');
+    </script>
+</body>
+</html>
