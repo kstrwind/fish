@@ -1,12 +1,12 @@
 <template>
-  <div class="tab-control">
+	<div class="tab-control">
     <div v-for="(title, index) in titles" 
-		class="tab-control-item"
-		:class="{active: currentIndex === index}"
-		:key="title"
-		@click="itemClick(index)">
-		<span>{{title}}</span>
-	</div>
+			class="tab-control-item"
+			:class="{active: currentIndex === index}"
+			:key="title"
+			@click="itemClick(index)">
+			<span>{{title}}</span>
+		</div>
   </div>
 </template>
 
@@ -52,3 +52,4 @@ export default {
 		padding: 5px 10px;
 	}
 </style>
+
