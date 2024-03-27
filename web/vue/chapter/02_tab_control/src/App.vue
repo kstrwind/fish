@@ -1,26 +1,29 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+	<div>
+		<tab-control :titles="titles" @titleClick="titleClick"></tab-control>
+		<h2>{{contents[currentIndex]}}</h2>
+	</div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import TabControl from './components/TabControl.vue';
 
 export default {
-  name: 'App',
+	name: "app",
   components: {
-    HelloWorld
+    TabControl
+  },
+  data() {
+		return {
+			titles: ["衣服", "鞋子", "裤子", "帽子"],
+			contents: ["衣服页面", "鞋子页面", "裤子页面", "帽子页面"],
+			currentIndex:0,
+		}
+  },
+  methods: {
+		titleClick(index) {
+			this.currentIndex = index;
+		}
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
